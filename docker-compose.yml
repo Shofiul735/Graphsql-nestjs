@@ -8,9 +8,13 @@ services:
     environment:
       - PORT=4000
       - NODE_ENV=dev
-      - DATABASE_URL=postgres://shofiul:postgres@postgres_db:5432
+      - DATABASE_URL=postgres://shofiul:postgres@postgres_db:5432/lesson
     volumes:
       - ./src:/app/src
+    depends_on:
+      - postgres_db
+    entrypoint: ["sh", "-c", "prisma migrate deploy && npm run start:dev"]
+
   postgres_db:
     image: postgres:16
     ports:
@@ -18,4 +22,4 @@ services:
     environment:
       - POSTGRES_USER=shofiul
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres_db
+      - POSTGRES_DB=lesson
