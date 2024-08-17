@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { PrismaModule } from './prisma/prisman.module';
 import { LessonModule } from './lesson/lesson.module';
 import { GraphQLModule } from '@nestjs/graphql';
+import { StudentModule } from './student/student.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { GraphQLModule } from '@nestjs/graphql';
     }),
     PrismaModule,
     LessonModule,
+    StudentModule,
   ],
 })
 export class AppModule {}

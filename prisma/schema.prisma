@@ -18,3 +18,9 @@ model SystemUser {
   email String  @unique
   name  String?
 }
+
+model Lesson {
+  id    Int     @id @default(autoincrement())
+  name  String
+  class String?
+}
