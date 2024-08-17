@@ -1,0 +1,12 @@
+services:
+  nestjs_api:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '4000:4000'
+    environment:
+      - PORT=4000
+      - NODE_ENV=dev
+    volumes:
+      - ./src:/app/src
