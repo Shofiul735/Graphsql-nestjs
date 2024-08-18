@@ -14,13 +14,16 @@ datasource db {
 }
 
 model SystemUser {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  lessons Lesson[]
 }
 
 model Lesson {
-  id    Int     @id @default(autoincrement())
-  name  String
-  class String?
+  id           Int        @id @default(autoincrement())
+  name         String
+  class        String?
+  systemUserId Int
+  systemUser   SystemUser @relation(references: [id], fields: [systemUserId])
 }
